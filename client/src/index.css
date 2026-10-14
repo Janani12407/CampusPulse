@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-cream: #FBF8F3;
+    --bg-card: #FFFFFF;
+    --ink-black: #1E1B18;
+    
+    /* Y2K Neubrutalist Accent Palette */
+    --accent-yellow: #FEEA75;
+    --accent-blue: #2563EB;
+    --accent-mint: #86EFAC;
+    --accent-coral: #FB7185;
+    --accent-lavender: #C084FC;
+    
+    /* Pillar Specific Accents */
+    --pillar-news: #2563EB;      /* Cerulean Blue */
+    --pillar-events: #FB7185;    /* Bubblegum Coral */
+    --pillar-volunteer: #86EFAC; /* Mint Green */
+    --pillar-blog: #FEEA75;      /* Butter Yellow */
+    --pillar-connect: #C084FC;   /* Lavender */
+  }
+
+  body {
+    background-color: var(--bg-cream);
+    color: var(--ink-black);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.03em;
+  }
+
+  code, pre, .font-mono, .stamp, .badge, .date-tag {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* ───── Neubrutalist Utility Classes & Physics ───── */
+.neo-box {
+  background-color: #FFFFFF;
+  border: 2px solid #1E1B18;
+  box-shadow: 4px 4px 0px #1E1B18;
+  border-radius: 12px;
+  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.neo-box-sm {
+  background-color: #FFFFFF;
+  border: 2px solid #1E1B18;
+  box-shadow: 2.5px 2.5px 0px #1E1B18;
+  border-radius: 8px;
+}
+
+.neo-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px #1E1B18;
+}
+
+.neo-box-interactive {
+  cursor: pointer;
+}
+.neo-box-interactive:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1E1B18;
+}
+
+/* Neubrutalist Buttons */
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  padding: 0.6rem 1.25rem;
+  border: 2px solid #1E1B18;
+  box-shadow: 3.5px 3.5px 0px #1E1B18;
+  border-radius: 9999px;
+  background-color: #FFFFFF;
+  color: #1E1B18;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+
+.neo-btn:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 5px 5px 0px #1E1B18;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #1E1B18;
+}
+
+.neo-btn-primary {
+  background-color: var(--accent-yellow);
+}
+
+.neo-btn-blue {
+  background-color: var(--accent-blue);
+  color: #FFFFFF;
+}
+
+.neo-btn-coral {
+  background-color: var(--accent-coral);
+  color: #1E1B18;
+}
+
+.neo-btn-mint {
+  background-color: var(--accent-mint);
+  color: #1E1B18;
+}
+
+.neo-btn-lavender {
+  background-color: var(--accent-lavender);
+  color: #1E1B18;
+}
+
+/* Sticker & Tape Badge Pills */
+.sticker-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border: 2px solid #1E1B18;
+  box-shadow: 2px 2px 0px #1E1B18;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.tape-header {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #FEEA75;
+  border: 2px solid #1E1B18;
+  padding: 2px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 800;
+  box-shadow: 2px 2px 0px #1E1B18;
+  transform: rotate(-2deg);
+  z-index: 10;
+}
+
+/* ───── Infinite Marquee Banner ───── */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Modal Overlay */
+.neo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 24, 0.65);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  padding: 1rem;
+}
+
+.neo-modal-content {
+  background-color: #FFFFFF;
+  border: 3px solid #1E1B18;
+  box-shadow: 8px 8px 0px #1E1B18;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Ticket Notch Effects for Event Cards */
+.ticket-edge {
+  position: relative;
+}
+.ticket-edge::before, .ticket-edge::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #FBF8F3;
+  border: 2px solid #1E1B18;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.ticket-edge::before {
+  left: -10px;
+}
+.ticket-edge::after {
+  right: -10px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FBF8F3;
+  border-left: 2px solid #1E1B18;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E1B18;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563EB;
+}
